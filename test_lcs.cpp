@@ -11,7 +11,7 @@ void test_lcs()
 {
     int right { 0 };
     int wrong { 0 };
-    std::vector<int> vo{256};
+    std::vector<int> vo(256);
     auto start = std::chrono::high_resolution_clock::now();
 #if 0
     for (int n = 1; n < 139; n += 2)
@@ -21,7 +21,6 @@ void test_lcs()
         std::cout << "std::cout << \"(lcs_e(a" << n << ", a" << n + 1 << ", vo) != \" << lcs_e(a" << n << ", a" << n + 1 << ", vo) << \") ? ++wrong : ++right;\\n\" ;\n";
     }
 #else
-std::cout << "hello\n";
     std::fill(vo.begin(), vo.end(), -1);
     (lcs_e(a1, a2, vo) != 1) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
@@ -32,7 +31,6 @@ std::cout << "hello\n";
     (lcs_e(a7, a8, vo) != 7) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
     (lcs_e(a9, a10, vo) != 9) ? ++wrong : ++right;
-std::cout << "hello 2\n";
     std::fill(vo.begin(), vo.end(), -1);
     (lcs_e(a11, a12, vo) != 10) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
@@ -171,7 +169,7 @@ void test_lcs_brief()
 {
     int right { 0 };
     int wrong { 0 };
-    std::vector<int> vo{256};
+    std::vector<int> vo(256);
     auto start = std::chrono::high_resolution_clock::now();
 #if 0
     for (int n = 1; n < 139; n += 2)

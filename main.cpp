@@ -7,8 +7,7 @@ void bug();
 
 int main()
 {
-    bug();
     test_diff();
-//    test_lcs();
+    test_lcs();
     test_lcs_brief();
 }
