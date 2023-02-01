@@ -161,6 +161,6 @@ void test_diff()
     (DIFF::diff(a137, a138, veo) != 2) ? ++wrong : ++right;
 #endif
     auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "test_diff :  " << (end - start) / 1us << "ms\n";
+    std::cout << "test_diff :  " << (end - start) / 1us << "us\n";
     std::cout << "right = " << right << ", wrong = " << wrong << "\n";
 }

@@ -118,8 +118,6 @@ template<typename V = v_full_t, typename InL, typename InR, typename Out> size_t
 			if (v == e)
 				break;
 		}
-		else
-		{
 		auto v2 = down(u);
 		if (v2 != -1 && !is_visited(g[v2]))
 		{
@@ -139,7 +137,6 @@ template<typename V = v_full_t, typename InL, typename InR, typename Out> size_t
 			q.push(v3);
 			if (v3== e)
 				break;
-		}
 		}
 	}
 

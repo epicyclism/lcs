@@ -38,7 +38,7 @@ void test_lcs()
     std::fill(vo.begin(), vo.end(), -1);
     (lcs_e(a15, a16, vo) != 11) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
-    (lcs_e(a17, a18, vo) != 1) ? ++wrong : ++right;
+    (lcs_e(a17, a18, vo) != 11) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
     (lcs_e(a19, a20, vo) != 10) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
@@ -161,7 +161,7 @@ void test_lcs()
     (lcs_e(a137, a138, vo) != 9) ? ++wrong : ++right;
 #endif    
     auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "test_lcs  :  " << (end - start) / 1us << "ms\n";
+    std::cout << "test_lcs  :  " << (end - start) / 1us << "us\n";
     std::cout << "right = " << right << ", wrong = " << wrong << "\n";
 }
 
@@ -319,6 +319,6 @@ void test_lcs_brief()
     (lcs_e<v_brief_t>(a137, a138, vo) != 9) ? ++wrong : ++right;
 #endif    
     auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "test_lcs_b :  " << (end - start) / 1us << "ms\n";
+    std::cout << "test_lcs_b :  " << (end - start) / 1us << "us\n";
     std::cout << "right = " << right << ", wrong = " << wrong << "\n";
 }
