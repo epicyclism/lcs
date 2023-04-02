@@ -331,6 +331,8 @@ void test_lcs_b()
     std::vector<int> vo(256);
     auto start = std::chrono::high_resolution_clock::now();
     std::fill(vo.begin(), vo.end(), -1);
+    (lcs_b(a1000, a1001, vo) != 1) ? ++wrong : ++right;
+    std::fill(vo.begin(), vo.end(), -1);
     (lcs_b(a1, a2, vo) != 1) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
     (lcs_b(a3, a4, vo) != 1) ? ++wrong : ++right;

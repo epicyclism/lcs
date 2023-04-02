@@ -9,13 +9,13 @@ template<typename InL, typename InR> auto lcs_b(InL const& a, InR const& b, std:
     using node_t = std::pair<int, int>;
     auto right = [&](node_t n) -> std::optional<node_t>
     {
-        if( n.first + 1 >= a.size())
+        if( n.first > a.size())
             return std::nullopt;
         return {{n.first + 1, n.second}};
     };
     auto down = [&](node_t n) -> std::optional<node_t>
     {
-        if( n.second + 1 >= b.size())
+        if( n.second  >= b.size())
             return std::nullopt;
         return {{n.first, n.second + 1}};
     };
@@ -27,12 +27,12 @@ template<typename InL, typename InR> auto lcs_b(InL const& a, InR const& b, std:
     };
     auto offset = [&](node_t n)
     {
-        return n.second * a.size() + n.first;
+        return n.second * (a.size()+ 1) + n.first;
     };
     // 'visited' workspace
-    std::vector<bool> visited (a.size() * b.size());
+    std::vector<bool> visited ((a.size() + 1) * (b.size() + 1));
     // 'previous' record
-    std::vector<node_t> previous(a.size() * b.size());
+    std::vector<node_t> previous((a.size() + 1) * (b.size() + 1));
     // work queue
     std::queue<node_t> q;
     auto push = [&](node_t n, node_t u)
@@ -61,7 +61,7 @@ template<typename InL, typename InR> auto lcs_b(InL const& a, InR const& b, std:
             push(dg.value(), u);
     }
     int ecnt{0};
-    node_t p { a.size() - 1, b.size() -1};
+    node_t p { a.size(), b.size()};
 	do
 	{
 		p = previous[offset(p)];
