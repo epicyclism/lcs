@@ -9,25 +9,29 @@ template<typename InL, typename InR> auto lcs_b(InL const& a, InR const& b, std:
     using node_t = std::pair<int, int>;
     auto right = [&](node_t n) -> std::optional<node_t>
     {
-        if( n.first > a.size())
+        if( n.first == a.size())
             return std::nullopt;
         return {{n.first + 1, n.second}};
     };
     auto down = [&](node_t n) -> std::optional<node_t>
     {
-        if( n.second  >= b.size())
+        if( n.second == b.size())
             return std::nullopt;
         return {{n.first, n.second + 1}};
     };
     auto diag = [&](node_t n) -> std::optional<node_t>
     {
-        if( n.first + 1 >= a.size() || n.second + 1 >= b.size() || a[n.first] != b[n.second])
+        if (n.first >= a.size() || n.second >= b.size() || a[n.first] != b[n.second])
             return std::nullopt;
         return {{n.first + 1, n.second + 1}};
     };
+    auto diagp = [&](node_t u, node_t p) -> bool
+    {
+        return p.first == u.first + 1 && p.second == u.second + 1;
+    };
     auto offset = [&](node_t n)
     {
-        return n.second * (a.size()+ 1) + n.first;
+        return n.second * (a.size() + 1) + n.first;
     };
     // 'visited' workspace
     std::vector<bool> visited ((a.size() + 1) * (b.size() + 1));
@@ -64,12 +68,13 @@ template<typename InL, typename InR> auto lcs_b(InL const& a, InR const& b, std:
     node_t p { a.size(), b.size()};
 	do
 	{
-		p = previous[offset(p)];
-		if (diag(p))
+		auto u = previous[offset(p)];
+		if (diagp(u, p))
         {
             ++ecnt;
-			out[p.first] = 1;
+			out[u.first] = 1;
         }
+        p = u;
 	} while (p != node_t{0, 0});
     return ecnt;
 }
