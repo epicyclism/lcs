@@ -107,15 +107,18 @@ template<typename InL, typename InR, typename Out> auto lcs_n(InL const& a, InR 
     auto v { previous[d2(end)] };
     while(1)
     {
+        std::cout << v.first.first << ", " << v.first.second;
         if (v.second)
         {
+            std::cout << " ==";
             out[v.first.first] = 1;
             ++cnt;
         }
+        std::cout << "\n";
         if (v.first == begin)
             break;
         v = previous[d2(v.first)];
     }
-
+    std::cout << cnt << "\n";
     return cnt;
 }

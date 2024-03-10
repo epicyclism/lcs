@@ -476,22 +476,22 @@ void test_lcs_b()
     std::cout << "right = " << right << ", wrong = " << wrong << "\n";
 }
 
-void test_lcs_n0()
+void test_lcs_n()
 {
     int right{ 0 };
     int wrong{ 0 };
     std::vector<int> vo(256);
     auto start = std::chrono::high_resolution_clock::now();
     std::fill(vo.begin(), vo.end(), -1);
-    (lcs_n(a1000, a1001, vo) != 3) ? ++wrong : ++right;
+    (lcs_n(a13, a14, vo) != 10) ? ++wrong : ++right;
     std::fill(vo.begin(), vo.end(), -1);
-    (lcs_n(a1002, a1003, vo) != 1) ? ++wrong : ++right;
+    (lcs_n(a15, a16, vo) != 11) ? ++wrong : ++right;
     auto end = std::chrono::high_resolution_clock::now();
     std::cout << "test_lcs_n :  " << (end - start) / 1us << "us\n";
     std::cout << "right = " << right << ", wrong = " << wrong << "\n";
 }
 
-void test_lcs_n()
+void test_lcs_nX()
 {
     int right { 0 };
     int wrong { 0 };
